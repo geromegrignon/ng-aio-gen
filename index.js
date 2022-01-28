@@ -41,7 +41,7 @@ const main = async () => {
 
         await octokit.rest.issues.create({
             owner: github.context.repo.owner,
-            repo: gituhb.context.repo.repo,
+            repo: github.context.repo.repo,
             title: ff.data.commit.message,
             body: `${ff.data.commit.message}\n [url](${ff.data.url})`
         });
