@@ -38,6 +38,13 @@ const main = async () => {
             ref: commit.sha
         });
         console.log(ff);
+
+        await octokit.rest.issues.create({
+            owner: github.context.repo.owner,
+            repo: gituhb.context.repo.repo,
+            title: ff.data.commit.message,
+            body: `${ff.data.commit.message}\n [url](${ff.data.url})`
+        });
     });
 
 
