@@ -23,7 +23,7 @@ const main = async () => {
 
     console.log(issues.data.length)
 
-    const foo = octokit.rest.repos.listCommits({
+    const foo = await octokit.rest.repos.listCommits({
         owner: 'angular',
         repo: 'angular',
         since: startday.toISOString(),
