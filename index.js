@@ -21,7 +21,7 @@ const main = async () => {
         path: 'aio/content'
     });
 
-    console.log(issues.issues.data.length)
+    console.log(issues.data.length)
 
     const foo = octokit.rest.repos.listCommits({
         owner: 'angular',
@@ -31,7 +31,7 @@ const main = async () => {
         path: 'aio/content'
     });
 
-    console.log(foo.issues.data.length)
+    console.log(foo.data.length)
 
     /*
 
