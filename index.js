@@ -31,7 +31,18 @@ const main = async () => {
         path: 'aio/content'
     });
 
-    console.log(foo)
+    foo.data.forEach(async commit => {
+        const ff = await octokit.rest.repos.getCommit({
+            owner: 'angular',
+            repo: 'angular',
+            ref: commit.sha
+        });
+        console.log(ff);
+    });
+
+
+
+    // console.log(foo)
 
     /*
 
