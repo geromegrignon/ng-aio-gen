@@ -43,7 +43,13 @@ const main = async () => {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
             title: ff.data.commit.message,
-            body: `${ff.data.commit.message}\n [url](${ff.data.url})`
+            labels: ['triage'],
+            body: `
+            ## Commit Message\n
+            \`\`\`\n
+            ${ff.data.commit.message}\n
+            \`\`\`\n
+            [url](${ff.data.html_url})`
         });
     });
 
