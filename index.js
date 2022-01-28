@@ -6,11 +6,11 @@ const octokit = github.getOctokit(token);
 
 const main = async () => {
     let startday = new Date();
-    startday.setDate(startday.getDate() - 1);
+    // startday.setDate(startday.getDate() - 1);
     startday.setHours(0,0,0,0);
 
     let endDay = new Date();
-    endDay.setDate(endDay.getDate() - 1);
+    // endDay.setDate(endDay.getDate() - 1);
     endDay.setHours(23,59,59,999);
 
     const issues = await octokit.rest.repos.getCodeFrequencyStats({
@@ -31,7 +31,7 @@ const main = async () => {
         path: 'aio/content'
     });
 
-    console.log(foo.data.length)
+    console.log(foo)
 
     /*
 
