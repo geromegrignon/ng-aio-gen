@@ -7,11 +7,11 @@ const octokit = github.getOctokit(token);
 const main = async () => {
     let startday = new Date();
     // startday.setDate(startday.getDate() - 1);
-    startday.setHours(0,0,0,0);
+    startday.setHours(0, 0, 0, 0);
 
     let endDay = new Date();
     // endDay.setDate(endDay.getDate() - 1);
-    endDay.setHours(23,59,59,999);
+    endDay.setHours(23, 59, 59, 999);
 
     const issues = await octokit.rest.repos.getCodeFrequencyStats({
         owner: 'angular',
@@ -45,14 +45,13 @@ const main = async () => {
             title: ff.data.commit.message,
             labels: ['triage'],
             body: `
-            ## Commit Message\n
-            \`\`\`\n
-            ${ff.data.commit.message}\n
-            \`\`\`\n
-            [url](${ff.data.html_url})`
+## Commit Message\n
+\`\`\`\n
+${ff.data.commit.message}\n
+\`\`\`\n
+[url](${ff.data.html_url})`
         });
     });
-
 
 
     // console.log(foo)
