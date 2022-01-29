@@ -39,10 +39,12 @@ const main = async () => {
         });
         console.log(ff);
 
+        const title = `[DOCS UPDATE] ${ff.data.commit.message.replace(/docs.*:/i).split('(#')[0]}`
+
         await octokit.rest.issues.create({
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
-            title: ff.data.commit.message,
+            title: title,
             labels: ['triage'],
             body: `
 ## Commit Message\n
