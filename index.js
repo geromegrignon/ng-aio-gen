@@ -6,11 +6,11 @@ const octokit = github.getOctokit(token);
 
 const main = async () => {
     let startday = new Date();
-    // startday.setDate(startday.getDate() - 1);
+    startday.setDate(startday.getDate() - 1);
     startday.setHours(0, 0, 0, 0);
 
     let endDay = new Date();
-    // endDay.setDate(endDay.getDate() - 1);
+    endDay.setDate(endDay.getDate() - 1);
     endDay.setHours(23, 59, 59, 999);
 
     const issues = await octokit.rest.repos.getCodeFrequencyStats({
@@ -39,7 +39,7 @@ const main = async () => {
         });
         console.log(ff);
 
-        const title = `[DOCS UPDATE] ${ff.data.commit.message.replace(/docs.*:/i).split('(#')[0]}`
+        const title = `[${commit.sha}][DOCS UPDATE] ${ff.data.commit.message.replace(/docs.*:/i).split('(#')[0]}`
 
         await octokit.rest.issues.create({
             owner: github.context.repo.owner,
@@ -54,26 +54,6 @@ ${ff.data.commit.message}\n
 [url](${ff.data.html_url})`
         });
     });
-
-
-    // console.log(foo)
-
-    /*
-
-    issues.forEach(async (issue) =>  {
-        console.log(issue.title);
-        const issues = await octokit.rest.issues.create({
-            owner: 'angular',
-            repo: 'angular',
-            since: startday.toISOString(),
-            until: endDay.toISOString(),
-            path: 'aio/content'
-        });
-    });
-
-     */
-
-
 }
 
 main();
